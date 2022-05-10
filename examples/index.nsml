@@ -1,0 +1,124 @@
+html{
+    [lang="en"]
+    head{
+        meta(n){
+            {[charset="UTF-8"]}
+            {[http-equiv="X-UA-Compatible" content="IE=edge"]}
+            {[name="viewport" content="width=device-width, initial-scale=1.0"]}
+        }
+        title{What is NSML?}
+        script{[src="./style.css"]}
+    }
+
+    body{
+        h1{[id="title"] What is NSML?}
+        div{
+            h3{NSML an easier to read and write syntax for writing webpages.}
+            p{
+                NSML is a markup language that compiles down to html. 
+                NSML stand's for Nassim Saboundji's Markup Language. 
+                Which is my name.
+            }
+            h3{Why?}
+            p(n){
+                {NSML aims to make it easier to handcraft webpages by providing
+                an easier to write syntax than HTML.} 
+                
+                {It is also geared towards making the source
+                legible to its author which important while writing articles or
+                blogposts in it.}
+                
+                {It is geared towards people
+                who would like to be able to write articles painlessly while also 
+                having control of the styling and structure of the webpage.} 
+
+                {This is something that markdown doesn't provide.}
+            }
+            h3{So to recap...}
+            ul{
+                li(n){
+                    {Easier to write than html}
+                    {Easier to read the source than html. Important for writers.}
+                    {Easy to write like markdown but allows you to keep control of 
+                     the structure and styling of the webpage.}
+                }
+            }
+
+            h3{Let's look at some examples}
+            pre{
+             body{
+               h1{[id="title"] This is title}
+               ul{
+                   [className=".beautifulList"]
+                   li{This is an item}
+                   li{This is an item}
+                   li{This is an item}
+                   li(n){
+                       {An easier way to write many list items}
+                       {Another item}
+                       {Another one}
+                   }
+               }
+               p{
+                This is a paragraph in which you can write cool text.
+               }  
+
+               // Alternatively you can.
+               p(n){
+                { 
+                    [className=".textIsRed"]
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    In vestibulum viverra vestibulum. Nulla facilisi. 
+                    Quisque commodo dolor in ipsum efficitur interdum. 
+                    Curabitur nulla leo, dapibus a sem et, euismod faucibus sem. 
+                    Duis accumsan eu lorem ut commodo. Quisque sit amet euismod odio. 
+                    Morbi a justo tellus. Curabitur hendrerit, velit in ornare accumsan,
+                    sem purus semper enim, vel pretium quam libero tempus lacus. 
+                    Curabitur tincidunt elit eget massa sollicitudin, 
+                    sagittis rhoncus mi faucibus. Aliquam ut enim dolor. 
+                    Donec semper orci lectus, in gravida nisi mattis eu.
+                }
+                {
+                    Nulla lobortis condimentum nunc, 
+                    sit amet ullamcorper quam dictum a. 
+                    Mauris suscipit diam ac dui luctus, 
+                    ut ultrices orci cursus. Nulla facilisi. 
+                    Cras nec blandit est. 
+                }
+                {
+                    Third paragraph
+                }
+               }
+
+               button{
+                [id="specialButton"]
+                Click me!
+               }
+
+               img{
+                [
+                    src="./anImage.jpeg
+                    className=".imageStyling"
+                    height="400"
+                    width="300"
+                ]
+               }
+             }
+            }
+
+            h3{In conclusion}
+            p(n){
+                {
+                    If you want to try it out for yourself take a look at the 
+                    a{
+                        [href="github.com" target="_blank"]
+                        github
+                    } repo for installation instructions.
+                }
+                {
+                  Finally, I just want to add that this page was also written in nsml.
+                }
+            }
+        }
+    }
+}
