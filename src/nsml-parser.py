@@ -10,4 +10,4 @@ file_by_line = []
 for line in file:
     file_by_line += [line]
 
-
+document_tree = {}
