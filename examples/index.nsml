@@ -97,11 +97,22 @@ html{
 
                img{
                 [
-                    src="./anImage.jpeg
+                    src="./anImage.jpeg"
                     className=".imageStyling"
                     height="400"
                     width="300"
                 ]
+
+                p{Single closing tags can be written by adding / before the opening bracket.}
+                input/{[id="usernamField"]}
+                br/{}
+
+                p{Multiple single closing tags can be written like this}
+                br(n)/{
+                    {}
+                    {}
+                    {}
+                }
                }
              }
             }
