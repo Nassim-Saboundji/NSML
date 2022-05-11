@@ -10,7 +10,17 @@ file = open(nsml_file_path, "r")
 
 document_tree = {}
 bracket_balance = 0
+tags = []
 for line in file:
-    bracket_balance += 1 if line.find("{") != -1 else 0
-    bracket_balance += -1 if line.find("}") != -1 else 0
-    print(line, bracket_balance)
+    
+    if line.find("{") != -1:
+        tag = line[:line.find("{")]
+        html_tag = {"element": tag.replace(" ", ""), "self_closing": False, "children": []}
+
+        if tag.find("/") != -1:
+            html_tag = { "element": tag[:tag.find("/")].replace(" ", ""), "self_closing": True, "children": None}
+            tags += [html_tag]
+        else:
+           tags += [html_tag]   
+   
+print(tags)
