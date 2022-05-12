@@ -2,7 +2,7 @@ import sys
 
 args = sys.argv
 
-html_exceptions = [{"html": "<!DOCTYPE html>"}]
+doctype = "<!DOCTYPE html>"
 
 nsml_file_path = args[1]
 
@@ -10,17 +10,33 @@ file = open(nsml_file_path, "r")
 
 document_tree = {}
 bracket_balance = 0
+
+
 tags = []
-for line in file:
+brackets = []
+for i, line in enumerate(file):
     
     if line.find("{") != -1:
-        tag = line[:line.find("{")]
-        html_tag = {"element": tag.replace(" ", ""), "self_closing": False, "children": []}
+        tag = line[:line.find("{")].replace(" ", "")
+        brackets += "{"
+        
+        tags.append(tag)
 
-        if tag.find("/") != -1:
-            html_tag = { "element": tag[:tag.find("/")].replace(" ", ""), "self_closing": True, "children": None}
-            tags += [html_tag]
-        else:
-           tags += [html_tag]   
-   
+    if line.find("}") != -1:
+        brackets += "}"
+
+
+for i, tag in enumerate(tags):
+    if tag == "":
+        tags[i] = tags[i-1]
+
+
+print(brackets)
 print(tags)
+
+
+hierarchy = "".join(brackets)
+hierarchy = hierarchy.replace("{}", "C")
+
+print(hierarchy)
+
