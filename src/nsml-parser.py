@@ -15,6 +15,7 @@ bracket_balance = 0
 
 
 tags = []
+attributs = []
 brackets = []
 for i, line in enumerate(file):
     
@@ -27,6 +28,8 @@ for i, line in enumerate(file):
     if line.find("}") != -1:
         brackets += "}"
 
+    if line.find("[") != -1 and line.find("]") != -1:
+        attributs.append(line[line.find("[") + 1:line.find("]")])
 
 for i, tag in enumerate(tags):
     if tag == "":
@@ -66,33 +69,6 @@ for i, position in enumerate(final_hierarchy):
 
 DOM_structure = right_side + list(reversed(left_side))
 
-#print(DOM_structure)
+print(attributs)
+print(DOM_structure)
 
-class Parser(HTMLParser):
-  # method to append the start tag to the list start_tags.
-  def handle_starttag(self, tag, attrs):
-    global start_tags
-    start_tags.append(tag)
-    # method to append the end tag to the list end_tags.
-  def handle_endtag(self, tag):
-    global end_tags
-    end_tags.append(tag)
-  # method to append the data between the tags to the list all_data.
-  def handle_data(self, data):
-    global all_data
-    all_data.append(data)
-  # method to append the comment to the list comments.
-  def handle_comment(self, data):
-    global comments
-    comments.append(data)
-start_tags = []
-end_tags = []
-all_data = []
-comments = []
-# Creating an instance of our class.
-html_parser = Parser()
-html_parser.feed("".join(DOM_structure))
-print(start_tags)
-print(end_tags)
-print(all_data)
-print(comments)
