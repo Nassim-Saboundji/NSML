@@ -1,3 +1,4 @@
+import enum
 import sys
 
 args = sys.argv
@@ -36,7 +37,28 @@ print(tags)
 
 
 hierarchy = "".join(brackets)
-hierarchy = hierarchy.replace("{}", "C")
+hierarchy = hierarchy.replace("{}", "c")
 
+nb_brackets = 0
+for c in hierarchy:
+    if c == "}" or c == "{":
+        nb_brackets += 1
+
+print(nb_brackets)
 print(hierarchy)
+
+final_hierarchy = []
+for c in hierarchy:
+
+    if c == "}":
+        continue
+
+    if c == "{":
+        final_hierarchy.append("p")
+    
+    if c == "c":
+        final_hierarchy.append("c")
+    
+
+print(final_hierarchy)
 

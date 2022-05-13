@@ -1,0 +1,27 @@
+html{
+    [lang="en"]
+    head{
+        meta{[charset="UTF-8"]}
+        {[http-equiv="X-UA-Compatible" content="IE=edge"]}
+        {[name="viewport" content="width=device-width, initial-scale=1.0"]}
+   
+        title{A simple webpage}
+        script{[src="./style.css"]}
+    }
+
+    body{
+        h1{This is a webpage!}
+        section{
+            p{
+                Hello world! This is a page written in nsml!
+            }
+            {
+                A simpler and more convenient syntax for writing webpages.
+            }
+            {
+                The goal is to provide a very readable syntax while also retaining
+                control over styling.
+            }
+        }
+    }
+}
