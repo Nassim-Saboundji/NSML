@@ -23,5 +23,8 @@ html{
                 control over styling.
             }
         }
+        form{
+            input/{}
+        }
     }
 }

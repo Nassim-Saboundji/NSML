@@ -29,12 +29,15 @@ for i, line in enumerate(file):
         brackets += "}"
 
     if line.find("[") != -1 and line.find("]") != -1:
-        attributs.append(line[line.find("[") + 1:line.find("]")])
+        attributs.append({"element": tags[len(tags)-1] ,"attributs": line[line.find("[") + 1:line.find("]")]})
 
 for i, tag in enumerate(tags):
     if tag == "":
         tags[i] = tags[i-1]
 
+for i, attribut in enumerate(attributs):
+    if attribut["element"] == "":
+        attributs[i]["element"] = attributs[i-1]["element"]
 
 hierarchy = "".join(brackets)
 hierarchy = hierarchy.replace("{}", "c")
@@ -63,8 +66,11 @@ for i, position in enumerate(final_hierarchy):
         right_side.append("<"+tags[i]+">")
         left_side.append("</"+tags[i]+">")
     if position == "c":
-        right_side.append("<"+tags[i]+">")
-        right_side.append("</"+tags[i]+">")
+        if tags[i].find("/"):
+            right_side.append("<"+tags[i]+">")
+        else:
+            right_side.append("<"+tags[i]+">")
+            right_side.append("</"+tags[i]+">")
 
 
 DOM_structure = right_side + list(reversed(left_side))
