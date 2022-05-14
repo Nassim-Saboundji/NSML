@@ -84,7 +84,8 @@ for i, element in enumerate(DOM_structure):
     if attributs_index > len(attributs) - 1:
         break
     
-    if element.replace("<", "").replace(">", "").replace("/", "") == attributs[attributs_index]["element"]:
+    if element.replace(">", "").replace("<","") == attributs[attributs_index]["element"]:
+        print(element)
         if element.find("/>") != -1:
             DOM_structure[i] = element[:element.find("/>")] + " " + attributs[attributs_index]["attributs"] + "/>"
         else:
