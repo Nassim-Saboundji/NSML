@@ -1,6 +1,4 @@
-import enum
 import sys
-from xml.etree.ElementTree import QName
 
 args = sys.argv
 
@@ -71,7 +69,8 @@ for c in hierarchy:
     
     if c == "c":
         final_hierarchy.append("c")
-    
+
+## This part allows use to get the correct DOM structure  
 right_side = []
 left_side = []
 for i, position in enumerate(final_hierarchy):
@@ -87,12 +86,17 @@ for i, position in enumerate(final_hierarchy):
 
 
 DOM_structure = right_side + list(reversed(left_side))
+##
+
 attributs_index = 0
+content_index = 0
 for i, element in enumerate(DOM_structure):
     if attributs_index > len(attributs) - 1:
         break
 
-    if element.replace(">", "").replace("<","") == attributs[attributs_index]["element"]:
+    raw_element = element.replace(">", "").replace("<","")
+    if raw_element == attributs[attributs_index]["element"]:
+        
         if element.find("/>") != -1:
             DOM_structure[i] = element[:element.find("/>")] + " " + attributs[attributs_index]["attributs"] + "/>"
         else:
@@ -101,7 +105,18 @@ for i, element in enumerate(DOM_structure):
         attributs_index += 1
     
 
-  
 
-print(DOM_structure)
+#print(DOM_structure)
+#print(list_of_content)
+
+for i, _ in enumerate(list_of_content):
+    list_of_content[i]["element"] = "<" + list_of_content[i]["element"]
+
 print(list_of_content)
+
+
+    # for element in DOM_structure:
+    #     if content["element"] in element:
+    #         print(content, element)
+    #         if i < len(list_of_content):
+    #             list_of_content.pop(i)
