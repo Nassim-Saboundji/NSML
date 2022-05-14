@@ -1,6 +1,6 @@
 import enum
 import sys
-from html.parser import HTMLParser
+from xml.etree.ElementTree import QName
 
 args = sys.argv
 
@@ -66,7 +66,7 @@ for i, position in enumerate(final_hierarchy):
         right_side.append("<"+tags[i]+">")
         left_side.append("</"+tags[i]+">")
     if position == "c":
-        if tags[i].find("/"):
+        if tags[i].find("/") != -1:
             right_side.append("<"+tags[i]+">")
         else:
             right_side.append("<"+tags[i]+">")
@@ -78,3 +78,18 @@ DOM_structure = right_side + list(reversed(left_side))
 print(attributs)
 print(DOM_structure)
 
+attributs_index = 0
+for i, element in enumerate(DOM_structure):
+    
+    if attributs_index > len(attributs) - 1:
+        break
+    
+    if element.replace("<", "").replace(">", "").replace("/", "") == attributs[attributs_index]["element"]:
+        if element.find("/>") != -1:
+            DOM_structure[i] = element[:element.find("/>")] + " " + attributs[attributs_index]["attributs"] + "/>"
+        else:
+            DOM_structure[i] = element[:element.find(">")] + " " + attributs[attributs_index]["attributs"] + ">"
+        
+        attributs_index += 1
+
+print(DOM_structure)
