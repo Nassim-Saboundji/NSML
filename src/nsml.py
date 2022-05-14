@@ -116,3 +116,19 @@ for el in DOM_structure:
 
 for el in final_elements:
     print(el)
+
+
+content_counter = 0
+final_DOM = []
+for tag in DOM_structure:
+    final_DOM.append(tag)
+
+    if content_counter > len(final_elements) - 1:
+        continue
+
+    if tag == final_elements[content_counter]['element']:
+        final_DOM.append(final_elements[content_counter]['content'])
+        content_counter += 1
+
+for el in final_DOM:
+    print(el)
