@@ -31,6 +31,8 @@ for i, line in enumerate(file):
 
     if line.find("}") != -1:
         brackets += "}"
+        print(line)
+        print(tag)
         list_of_content.append({"element": tag, "content": content})
         content = ""
 
@@ -106,17 +108,23 @@ for i, element in enumerate(DOM_structure):
     
 
 
-#print(DOM_structure)
-#print(list_of_content)
-
 for i, _ in enumerate(list_of_content):
     list_of_content[i]["element"] = "<" + list_of_content[i]["element"]
 
-print(list_of_content)
+final_DOM = []
+content_counter = 0
+for i, element in enumerate(DOM_structure):
+
+    if content_counter > len(list_of_content) - 1:
+        break
+   
+    if list_of_content[content_counter]["element"] in element:
+        final_DOM.append(element)
+        final_DOM.append(list_of_content[content_counter]["content"])
+        content_counter += 1
+    else:
+        final_DOM.append(element)
 
 
-    # for element in DOM_structure:
-    #     if content["element"] in element:
-    #         print(content, element)
-    #         if i < len(list_of_content):
-    #             list_of_content.pop(i)
+for el in list_of_content:
+    print(el)
