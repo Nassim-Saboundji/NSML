@@ -5,12 +5,16 @@ html{
         {[http-equiv="X-UA-Compatible" content="IE=edge"]}
         {[name="viewport" content="width=device-width, initial-scale=1.0"]}
    
-        title{A simple webpage}
+        title{
+            A simple webpage
+        }
         script{[src="./style.css"]}
     }
 
     body{
-        h1{This is a webpage!}
+        h1{
+            This is a webpage!
+        }
         section{
             p{
                 [className=".textColor"]

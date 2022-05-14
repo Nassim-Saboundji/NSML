@@ -17,6 +17,9 @@ bracket_balance = 0
 tags = []
 attributs = []
 brackets = []
+
+content = ""
+list_of_content = []
 for i, line in enumerate(file):
     
     if line.find("{") != -1:
@@ -25,11 +28,17 @@ for i, line in enumerate(file):
         
         tags.append(tag)
 
+    if line.find("{") == -1 and line.find("}") == -1 and line.find("[") == -1 and line.find("]") == -1:
+        content += line
+
     if line.find("}") != -1:
         brackets += "}"
+        list_of_content.append({"element": tag, "content": content})
+        content = ""
 
     if line.find("[") != -1 and line.find("]") != -1:
         attributs.append({"element": tags[len(tags)-1] ,"attributs": line[line.find("[") + 1:line.find("]")]})
+
 
 for i, tag in enumerate(tags):
     if tag == "":
@@ -38,6 +47,10 @@ for i, tag in enumerate(tags):
 for i, attribut in enumerate(attributs):
     if attribut["element"] == "":
         attributs[i]["element"] = attributs[i-1]["element"]
+
+for i, content in enumerate(list_of_content):
+    if content["element"] == "":
+        list_of_content[i]["element"] = list_of_content[i-1]["element"]
 
 hierarchy = "".join(brackets)
 hierarchy = hierarchy.replace("{}", "c")
@@ -74,23 +87,21 @@ for i, position in enumerate(final_hierarchy):
 
 
 DOM_structure = right_side + list(reversed(left_side))
-
-print(attributs)
-print(DOM_structure)
-
 attributs_index = 0
 for i, element in enumerate(DOM_structure):
-    
     if attributs_index > len(attributs) - 1:
         break
-    
+
     if element.replace(">", "").replace("<","") == attributs[attributs_index]["element"]:
-        print(element)
         if element.find("/>") != -1:
             DOM_structure[i] = element[:element.find("/>")] + " " + attributs[attributs_index]["attributs"] + "/>"
         else:
             DOM_structure[i] = element[:element.find(">")] + " " + attributs[attributs_index]["attributs"] + ">"
         
         attributs_index += 1
+    
+
+  
 
 print(DOM_structure)
+print(list_of_content)
