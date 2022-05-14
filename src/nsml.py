@@ -54,6 +54,7 @@ for line in file:
     
     if open_curly_b == -1 and closed_curly_b == -1 and open_bracket == -1 and closed_bracket == -1:
         content += line
+        print(content)
     
     if open_curly_b != -1:
         brackets += "{"
@@ -130,5 +131,8 @@ for tag in DOM_structure:
         final_DOM.append(final_elements[content_counter]['content'])
         content_counter += 1
 
+print(contents)
+
+output_file = open("./index.html", "a")
 for el in final_DOM:
-    print(el)
+    output_file.write(el)

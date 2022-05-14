@@ -1,0 +1,49 @@
+head{
+    title{This is a title}
+}
+body{
+    h1{A webpage written in NSML}
+    ul{
+        li{First item}
+        {Second item}
+        {Third item}
+    }
+}
+                
+head
+
+title = "This is the content of an html doc"
+title.attrs = [id="a-title"]
+head > title
+
+document
+document.head
+document.head.title = {
+    [id="a-title"]
+    This is a title
+}
+
+
+head.title = "A title"
+body.div = [className="essay"]
+div.
+
+head{
+    .atts=[]
+    .content=[]
+    .children=[div1, div2, div3]
+}
+
+div1 as div {
+    .attrs=[]
+    .content=[]
+    .children=[p1,p2,p3]
+}
+
+p1 as p {
+   This is a paragraph in which I test my writing. 
+}
+
+paragraphs as p(4){
+
+}

@@ -1,0 +1,56 @@
+html {
+    children=[title, body]
+}
+
+title {
+    A title
+    attrs=[id="a-title"]
+}
+
+body {
+    children=[h1, p-collection1, img/, p-collection2, coolBtn]
+}
+
+h1 {
+    Introducing NSML. A new way of writing webpages.
+}
+
+p-collection1 as ...p {
+    NSML was born out of a desire to rethink HTML. I wanted to create 
+    a way of making webpages by hand that is more time efficient and has
+    a better writing experience than html.
+    /
+    attrs=[]
+    Some could say that Markdown is already there to do the job. However, I
+    wanted to offer a solution that would allow you to retain control over styling.
+    /
+    The goal is that you could use NSML to craft your website as well as writing your
+    posts.
+    /
+    NSML is made to have the source be easily readable and also easy to write. 
+    Which would offer a better writing experience.
+}
+
+img/{
+    attrs=[src="image.jpeg" alt="a beautiful picture of nature"]
+}
+
+p-collection2 as p {
+    attrs=[className="redText"]
+    This page btw is written in NSML.
+    /
+    If you want to try it out. Go to my github and download the parser. You'll be ready
+    to go in no time.
+    /
+    Also please look at ${a}.
+}
+
+a {
+    attrs=[href="github.com" target="_blank"]
+    The Github repo
+}
+
+coolBtn as button {
+    attrs=[id="cool-btn"]
+    Click me!
+}
