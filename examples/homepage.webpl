@@ -35,7 +35,7 @@ img/{
     attrs=[src="image.jpeg" alt="a beautiful picture of nature"]
 }
 
-p-collection2 as p {
+p-collection2 as ...p {
     attrs=[className="redText"]
     This page btw is written in NSML.
     /
@@ -54,3 +54,28 @@ coolBtn as button {
     attrs=[id="cool-btn"]
     Click me!
 }
+
+list as ul {
+
+}
+
+items as ...li {
+
+}
+
+paragraph as ...p:
+    This is some text in which I'll write stuff.
+    /
+    attrs=[]
+    children=[ul]
+    This is another paragraph where I'll explain how to write something
+    Like this is cool! ${a}
+
+
+body:
+    children=[p1,p2,p3]
+
+p1 as p:
+    attrs=[id="a-text"]
+    This is a paragraph where I write stuff.
+
