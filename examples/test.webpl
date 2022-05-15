@@ -1,0 +1,48 @@
+html:
+    children=[head, body]
+
+head:
+    children=[metaTags, title]
+
+metaTags as ...meta:
+    attrs=[charset="UTF-8"]
+    /
+    attrs=[http-equiv="X-UA-Compatible" content="IE=edge"]
+    /
+    attrs=[name="viewport" content="width=device-width, initial-scale=1.0"]
+
+title:
+    Document
+
+body:
+    children=[h1,p1,p2,userNameField]
+
+h1:
+    attrs=[id="a-title"]
+    This is a title
+
+p1 as p:
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Quisque at ultricies ante, non porta velit. Nam ut lectus mi.
+    Sed sit amet tellus tristique, mattis sapien eget, vehicula sapien.
+    Ut faucibus justo in nibh imperdiet, non cursus orci consequat. 
+    Quisque eu elementum risus, non condimentum neque. 
+    Nulla id sem et purus vestibulum posuere in eget justo. 
+    Donec magna nulla, dictum sit amet turpis tempus, laoreet semper ante. 
+    Suspendisse tempor faucibus erat, a porttitor diam. 
+
+link as a:
+    attrs=[href="www.github.com"]
+    Click Here!
+
+
+p2 as p:
+    Cras ut enim risus. Vivamus condimentum ante a lacus dictum, sit amet posuere nunc fringilla.
+    Fusce in consequat nisi. Nulla sit amet sem euismod, interdum metus a, porttitor sapien.
+    Nullam nec felis ut est sodales vestibulum vel non nulla.
+    Mauris non iaculis dui. Sed dolor tortor, fermentum eu vestibulum eget, molestie et odio.
+    Duis feugiat blandit elit, a porta dui egestas vitae. Cras nec bibendum est. 
+    Phasellus nec ante tellus. ${link}
+
+userNameField as input/:
+    attrs=[type="text"]

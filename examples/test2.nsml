@@ -44,6 +44,22 @@ p1 as p {
    This is a paragraph in which I test my writing. 
 }
 
-paragraphs as p(4){
+div2 as div {
+    attrs=[]
+    children=[...paragraphs]
+}
+
+paragraphs as p(){
+    It was a bright day when I tried to write this paragraph.
+    I wanted to tell a story unlike any other. I wanted to make
+    my first novel.
+    /
+    When I decided that it was time to write. I opened up my html editor.
+    However, unfortunately, I got pretty annoyed.
+    /
+    What was supposed to be a productive afternoon was turned into a mess because
+    writing html by hand is not fun.
+
 
 }
+
